@@ -845,3 +845,31 @@ html{ scroll-padding-top: 80px; }
   justify-content: center;
   margin-top: 20px;
 }
+
+/* ===== Footer legal: layout mobile-friendly ===== */
+.footer__legal{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.footer__legal span { display: none; }
+
+
+.footer__legal a{ line-height: 1.1; }
+.footer__legal a:not([class*="iubenda"]){
+  white-space: normal;                
+  word-break: break-word;             
+}
+
+
+@media (max-width: 480px){
+  .footer__legal{ gap: 10px; }
+  .footer__legal a{ font-size: 14px; }
+  .footer__legal a:not([class*="iubenda"]){
+    padding: 6px 10px;                
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 8px;
+  }
+}
