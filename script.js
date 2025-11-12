@@ -227,10 +227,20 @@ window.addEventListener('DOMContentLoaded', () => {
   // Banner (presente solo in home)
   const banner = document.getElementById('maps-consent-banner');
   if (banner) {
+    // NEW: riapri il banner se si arriva con #consenso-mappe (e azzera la scelta)
+    if (location.hash === '#consenso-mappe') {
+      try { localStorage.removeItem(KEY); } catch (e) {}
+    }
+
     const saved = localStorage.getItem(KEY);
     if (saved !== 'granted' && saved !== 'denied') {
       banner.style.display = 'block';
     }
+    // NEW: assicurati che con #consenso-mappe il banner si mostri
+    if (location.hash === '#consenso-mappe') {
+      banner.style.display = 'block';
+    }
+
     const acceptBtn = document.getElementById('maps-consent-accept');
     const declineBtn = document.getElementById('maps-consent-decline');
     if (acceptBtn) acceptBtn.addEventListener('click', () => {
