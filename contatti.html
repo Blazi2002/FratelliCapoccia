@@ -60,9 +60,33 @@
             <p><i class="fa-brands fa-whatsapp"></i> WhatsApp: <a href="#" id="wh-link">Scrivici</a></p>
           </div>
 
+          <!-- BLOCCO MAPPA aggiornato: mostra solo se consenso dato in home -->
           <div class="map-container">
-            <iframe title="Mappa salone" src="https://www.google.com/maps?q=Viale+Vittorio+Veneto,+39%2F41,+00046+Grottaferrata+RM&output=embed" width="100%" height="260" style="border:0;border-radius:12px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- Avviso se non c'è consenso (nessun pulsante qui) -->
+            <div id="map-disabled" style="text-align:center; padding:20px; background:#f8f8f8; border-radius:12px; display:none;">
+              <p style="margin:0 0 8px 0;">
+                La mappa di Google è disattivata perché non hai accettato i cookie di terze parti.
+              </p>
+              <p style="margin:0;">
+                Puoi rivedere la scelta dal banner in home o consultare la nostra
+                <a href="https://www.iubenda.com/privacy-policy/54217366/cookie-policy" target="_blank" rel="noopener">Cookie Policy</a>.
+              </p>
+            </div>
+
+            <!-- Mappa: visibile solo con consenso -->
+            <div id="google-map-container" style="display:none;">
+              <iframe
+                title="Mappa salone"
+                src="https://www.google.com/maps?q=Viale+Vittorio+Veneto,+39%2F41,+00046+Grottaferrata+RM&output=embed"
+                width="100%"
+                height="260"
+                style="border:0;border-radius:12px;"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
           </div>
+          <!-- FINE BLOCCO MAPPA -->
         </div>
       </div>
     </section>
@@ -110,6 +134,7 @@
 </footer>
 
   <button id="scroll-up" class="scrollup" aria-label="Torna su"><i class="fa-solid fa-arrow-up"></i></button>
+
   <script src="script.js" defer></script>
 </body>
 </html>

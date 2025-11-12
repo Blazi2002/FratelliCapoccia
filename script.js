@@ -219,3 +219,37 @@ window.addEventListener('DOMContentLoaded', () => {
     }, 800);
   }
 });
+
+/* === AGGIUNTA: Consenso Google Maps (banner in home + controllo in contatti) === */
+(function () {
+  const KEY = 'mapsConsent'; // 'granted' | 'denied'
+
+  // Banner (presente solo in home)
+  const banner = document.getElementById('maps-consent-banner');
+  if (banner) {
+    const saved = localStorage.getItem(KEY);
+    if (saved !== 'granted' && saved !== 'denied') {
+      banner.style.display = 'block';
+    }
+    const acceptBtn = document.getElementById('maps-consent-accept');
+    const declineBtn = document.getElementById('maps-consent-decline');
+    if (acceptBtn) acceptBtn.addEventListener('click', () => {
+      localStorage.setItem(KEY, 'granted');
+      banner.remove();
+    });
+    if (declineBtn) declineBtn.addEventListener('click', () => {
+      localStorage.setItem(KEY, 'denied');
+      banner.remove();
+    });
+  }
+
+  // Pagina Contatti: mostra/nascondi la mappa in base al consenso
+  const mapContainer = document.getElementById('google-map-container');
+  const mapDisabled = document.getElementById('map-disabled');
+  if (mapContainer || mapDisabled) {
+    const consent = localStorage.getItem(KEY);
+    const showMap = consent === 'granted';
+    if (mapContainer) mapContainer.style.display = showMap ? 'block' : 'none';
+    if (mapDisabled) mapDisabled.style.display = showMap ? 'none' : 'block';
+  }
+})();

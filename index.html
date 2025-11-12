@@ -13,6 +13,28 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-theme="light">
+
+<!-- Banner consenso Google Maps (solo home) -->
+<div id="maps-consent-banner" role="dialog" aria-live="polite" aria-label="Consenso Google Maps"
+     style="position:fixed; inset:auto 1rem 1rem 1rem; z-index:9999; background:#111; color:#fff; padding:16px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.25); display:none;">
+  <p style="margin:0 0 10px 0; line-height:1.4;">
+    Per visualizzare la mappa di Google nelle pagine del sito utilizziamo <strong>cookie di terze parti (Google Maps)</strong>.
+    Proseguendo senza accettare, la mappa resterà disattivata.
+    Consulta la nostra <a href="https://www.iubenda.com/privacy-policy/54217366/cookie-policy" target="_blank" rel="noopener"
+    style="color:#8fd3ff; text-decoration:underline;">Cookie Policy</a>.
+  </p>
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <button id="maps-consent-accept" type="button"
+            style="background:#22c55e; color:#111; border:0; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:700;">
+      Accetta Google Maps
+    </button>
+    <button id="maps-consent-decline" type="button"
+            style="background:#333; color:#fff; border:1px solid #555; padding:10px 14px; border-radius:8px; cursor:pointer;">
+      Rifiuta
+    </button>
+  </div>
+</div>
+
 <div id="preloader">
   <img src="images/logo_fc_wordmark.png" alt="Fratelli Capoccia" class="preloader__logo" />
 </div>
