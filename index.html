@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fratelli Capoccia – Hair Atelier a Roma</title>
   <meta name="description" content="Parrucchieri a Roma: taglio donna/uomo, colore, balayage, trattamenti su misura. Prenota la tua consulenza personalizzata." />
-  <meta name="theme-color" content="#8C6D46" />
+  <meta name="theme-color" content="#08080a" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="atelier.css" />
 </head>
 <body data-theme="light">
 
@@ -38,17 +39,15 @@
 <div id="preloader">
   <img src="images/logo_fc_wordmark.png" alt="Fratelli Capoccia" class="preloader__logo" />
 </div>
+
   <header class="header" id="header">
     <nav class="nav container" role="navigation" aria-label="Principale">
       <a href="index.html" class="nav__logo" aria-label="Fratelli Capoccia">
-  <img
-    src="images/logo_fc_wordmark.png"
-    srcset="images/logo_fc_wordmark.png 1x, images/logo_fc_wordmark@2x.png 2x"
-    alt="Fratelli Capoccia Hair Atelier"
-    width="312" height="44"
-    decoding="async" fetchpriority="high"
-  />
-</a>
+        <img src="images/logo_fc_wordmark.png"
+             srcset="images/logo_fc_wordmark.png 1x, images/logo_fc_wordmark@2x.png 2x"
+             alt="Fratelli Capoccia Hair Atelier" width="312" height="44"
+             decoding="async" fetchpriority="high" />
+      </a>
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
           <li class="nav__item"><a href="index.html" class="nav__link active" aria-current="page">Home</a></li>
@@ -59,7 +58,7 @@
         </ul>
       </div>
       <div class="nav__actions">
-        <a href="contatti.html" class="button">Prenota Ora</a>
+        <a href="contatti.html" class="button magnetic">Prenota Ora</a>
         <button id="theme-toggle" class="nav__icon" aria-label="Attiva tema scuro"><i class="fa-solid fa-moon"></i></button>
         <div class="nav__toggle" id="nav-toggle" aria-label="Apri menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></div>
       </div>
@@ -69,14 +68,14 @@
 
   <main>
     <section class="hero hero--bg" style="--hero-bg: url('images/salone-bg.png')">
-      <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+      <canvas id="hero-canvas" class="hero__canvas" data-src="images/salone-bg.png" aria-hidden="true"></canvas>
       <div class="container hero__inner">
-        <div class="hero__content fade-in-element">
+        <div class="hero__content">
           <span class="badge">Hair Atelier • Grottaferrata</span>
-          <h1 class="hero__title">Eleganza naturale,<br/>stile senza tempo.</h1>
-          <p class="hero__subtitle">Tagli sartoriali, colorazioni su misura e trattamenti che rispettano il capello. Il tuo stile, curato nei dettagli.</p>
-          <div class="hero__cta">
-            <a href="contatti.html" class="button">Prenota una consulenza</a>
+          <h1 class="hero__title split-3d">Eleganza naturale,<br/>stile senza tempo.</h1>
+          <p class="hero__subtitle reveal">Tagli sartoriali, colorazioni su misura e trattamenti che rispettano il capello. Il tuo stile, curato nei dettagli.</p>
+          <div class="hero__cta reveal">
+            <a href="contatti.html" class="button magnetic">Prenota una consulenza</a>
             <a href="servizi.html" class="button button--ghost">Scopri i servizi</a>
           </div>
         </div>
@@ -84,20 +83,19 @@
     </section>
 
     <section class="section container">
-      <div class="highlight">
+      <div class="highlight reveal">
         <i class="fa-solid fa-leaf"></i>
         Prodotti selezionati e trattamenti rispettosi del capello.
       </div>
     </section>
 
     <section class="section container">
-      <h2 class="section__title">I nostri servizi più richiesti</h2>
-      <p class="section__subtitle">Qualunque sia il tuo obiettivo, costruiamo insieme il percorso giusto.</p>
+      <span class="occhiello reveal" aria-hidden="true"></span>
+      <h2 class="section__title reveal">I nostri servizi più richiesti</h2>
+      <p class="section__subtitle reveal">Qualunque sia il tuo obiettivo, costruiamo insieme il percorso giusto.</p>
 
-      
-      
-      <div class="service__grid">
-        <article class="service__card fade-in-element">
+      <div class="service__grid" style="margin-top:56px">
+        <article class="service__card reveal">
           <div class="service__icon"><i class="fa-solid fa-scissors" aria-hidden="true"></i></div>
           <div class="service__content">
             <h3 class="service__title">Taglio Donna</h3>
@@ -106,7 +104,7 @@
           </div>
         </article>
 
-        <article class="service__card fade-in-element">
+        <article class="service__card reveal">
           <div class="service__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
           <div class="service__content">
             <h3 class="service__title">Colore e Schiariture</h3>
@@ -115,7 +113,7 @@
           </div>
         </article>
 
-        <article class="service__card fade-in-element">
+        <article class="service__card reveal">
           <div class="service__icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></div>
           <div class="service__content">
             <h3 class="service__title">Trattamenti</h3>
@@ -124,34 +122,36 @@
           </div>
         </article>
       </div>
-
     </section>
 
     <section class="section container">
       <div class="duo">
-        <div class="duo__image image-frame fade-in-element">
+        <div class="duo__image image-frame reveal" data-parallax="0.16">
           <img src="images/proprietari-home.png" alt="I fondatori del salone Fratelli Capoccia" loading="lazy"/>
         </div>
-        <div class="duo__content fade-in-element">
-          <h2 class="section__title">La nostra firma</h2>
-          <p class="section__subtitle">Ogni look nasce dall’ascolto: forma del viso, stile di vita, desideri.</p>
-          <a href="chi-siamo.html" class="button button--ghost">Conosci la nostra storia</a>
+        <div class="duo__content">
+          <span class="occhiello reveal" aria-hidden="true"></span>
+          <h2 class="section__title reveal">La nostra firma</h2>
+          <p class="section__subtitle reveal">Ogni look nasce dall’ascolto: forma del viso, stile di vita, desideri.</p>
+          <p class="reveal" style="margin-top:32px">
+            <a href="chi-siamo.html" class="button button--ghost">Conosci la nostra storia</a>
+          </p>
         </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="cta container soft-gradient fade-in-element">
+      <div class="cta container soft-gradient reveal">
         <div class="cta__text">
           <h2 class="cta__title">Pronto al cambiamento?</h2>
           <p class="cta__subtitle">Prenota ora una tua consulenza gratuita.</p>
         </div>
-        <a href="contatti.html" class="button button--dark">Prenota</a>
+        <a href="contatti.html" class="button button--dark magnetic">Prenota</a>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
+<footer class="footer">
   <div class="container footer__top">
     <a href="index.html" class="footer__brand" aria-label="Fratelli Capoccia Home">
       </span>
