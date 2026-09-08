@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Servizi – Fratelli Capoccia</title>
-  <meta name="description" content="Tutti i servizi Fratelli Capoccia: taglio, colore, trattamenti e styling." />
+  <title>Fratelli Capoccia – Hair Atelier a Roma</title>
+  <meta name="description" content="Parrucchieri a Roma: taglio donna/uomo, colore, balayage, trattamenti su misura. Prenota la tua consulenza personalizzata." />
+  <meta name="theme-color" content="#8C6D46" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
@@ -12,6 +13,31 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body data-theme="light">
+
+<!-- Banner consenso Google Maps (solo home) -->
+<div id="maps-consent-banner" role="dialog" aria-live="polite" aria-label="Consenso Google Maps"
+     style="position:fixed; inset:auto 1rem 1rem 1rem; z-index:9999; background:#111; color:#fff; padding:16px; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,.25); display:none;">
+  <p style="margin:0 0 10px 0; line-height:1.4;">
+    Per visualizzare la mappa di Google nelle pagine del sito utilizziamo <strong>cookie di terze parti (Google Maps)</strong>.
+    Proseguendo senza accettare, la mappa resterà disattivata.
+    Consulta la nostra <a href="https://www.iubenda.com/privacy-policy/54217366/cookie-policy" target="_blank" rel="noopener"
+    style="color:#8fd3ff; text-decoration:underline;">Cookie Policy</a>.
+  </p>
+  <div style="display:flex; gap:8px; flex-wrap:wrap;">
+    <button id="maps-consent-accept" type="button"
+            style="background:#22c55e; color:#111; border:0; padding:10px 14px; border-radius:8px; cursor:pointer; font-weight:700;">
+      Accetta Google Maps
+    </button>
+    <button id="maps-consent-decline" type="button"
+            style="background:#333; color:#fff; border:1px solid #555; padding:10px 14px; border-radius:8px; cursor:pointer;">
+      Rifiuta
+    </button>
+  </div>
+</div>
+
+<div id="preloader">
+  <img src="images/logo_fc_wordmark.png" alt="Fratelli Capoccia" class="preloader__logo" />
+</div>
   <header class="header" id="header">
     <nav class="nav container" role="navigation" aria-label="Principale">
       <a href="index.html" class="nav__logo" aria-label="Fratelli Capoccia">
@@ -25,8 +51,8 @@
 </a>
       <div class="nav__menu" id="nav-menu">
         <ul class="nav__list">
-          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-          <li class="nav__item"><a href="servizi.html" class="nav__link active" aria-current="page">Servizi</a></li>
+          <li class="nav__item"><a href="index.html" class="nav__link active" aria-current="page">Home</a></li>
+          <li class="nav__item"><a href="servizi.html" class="nav__link">Servizi</a></li>
           <li class="nav__item"><a href="prodotti.html" class="nav__link">Prodotti</a></li>
           <li class="nav__item"><a href="chi-siamo.html" class="nav__link">Chi Siamo</a></li>
           <li class="nav__item"><a href="contatti.html" class="nav__link">Contatti</a></li>
@@ -38,176 +64,94 @@
         <div class="nav__toggle" id="nav-toggle" aria-label="Apri menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></div>
       </div>
     </nav>
+    <div class="nav__overlay" id="nav-overlay" hidden></div>
   </header>
 
   <main>
-    <section class="section container" style="padding-top: 32px; padding-bottom: 8px;">
-      <div class="hero__content fade-in-element" style="text-align: left;">
-        <span class="badge">I nostri servizi</span>
-        <h1 class="hero__title" style="margin-bottom: 10px;">Qualità sartoriale, risultati concreti.</h1>
-        <p style="
-          font-size: 1.1rem;
-          color: var(--brand);
-          font-family: 'Playfair Display', serif;
-          font-style: italic;
-          letter-spacing: 0.3px;
-          margin: 0;
-        ">
-          Un percorso dedicato alla bellezza autentica dei tuoi capelli.
-        </p>
+    <section class="hero hero--bg" style="--hero-bg: url('images/salone-bg.png')">
+      <canvas id="hero-canvas" class="hero__canvas" aria-hidden="true"></canvas>
+      <div class="container hero__inner">
+        <div class="hero__content fade-in-element">
+          <span class="badge">Hair Atelier • Grottaferrata</span>
+          <h1 class="hero__title">Eleganza naturale,<br/>stile senza tempo.</h1>
+          <p class="hero__subtitle">Tagli sartoriali, colorazioni su misura e trattamenti che rispettano il capello. Il tuo stile, curato nei dettagli.</p>
+          <div class="hero__cta">
+            <a href="contatti.html" class="button">Prenota una consulenza</a>
+            <a href="servizi.html" class="button button--ghost">Scopri i servizi</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="highlight">
+        <i class="fa-solid fa-leaf"></i>
+        Prodotti selezionati e trattamenti rispettosi del capello.
+      </div>
+    </section>
+
+    <section class="section container">
+      <h2 class="section__title">I nostri servizi più richiesti</h2>
+      <p class="section__subtitle">Qualunque sia il tuo obiettivo, costruiamo insieme il percorso giusto.</p>
+
+      
+      
+      <div class="service__grid">
+        <article class="service__card fade-in-element">
+          <div class="service__icon"><i class="fa-solid fa-scissors" aria-hidden="true"></i></div>
+          <div class="service__content">
+            <h3 class="service__title">Taglio Donna</h3>
+            <p class="service__text">Un’esperienza sartoriale, per esaltare i tuoi lineamenti.</p>
+            <a class="service__link" href="servizi.html#taglio" aria-label="Scopri Taglio Donna">Scopri di più</a>
+          </div>
+        </article>
+
+        <article class="service__card fade-in-element">
+          <div class="service__icon"><i class="fa-solid fa-palette" aria-hidden="true"></i></div>
+          <div class="service__content">
+            <h3 class="service__title">Colore e Schiariture</h3>
+            <p class="service__text">Tecniche avanzate per la tua armocromia.</p>
+            <a class="service__link" href="servizi.html#colore" aria-label="Scopri Colore e Schiariture">Scopri di più</a>
+          </div>
+        </article>
+
+        <article class="service__card fade-in-element">
+          <div class="service__icon"><i class="fa-solid fa-leaf" aria-hidden="true"></i></div>
+          <div class="service__content">
+            <h3 class="service__title">Trattamenti</h3>
+            <p class="service__text">La salute dei tuoi capelli è la nostra priorità.</p>
+            <a class="service__link" href="servizi.html#trattamenti" aria-label="Scopri Trattamenti">Scopri di più</a>
+          </div>
+        </article>
+      </div>
+
+    </section>
+
+    <section class="section container">
+      <div class="duo">
+        <div class="duo__image image-frame fade-in-element">
+          <img src="images/proprietari-home.png" alt="I fondatori del salone Fratelli Capoccia" loading="lazy"/>
+        </div>
+        <div class="duo__content fade-in-element">
+          <h2 class="section__title">La nostra firma</h2>
+          <p class="section__subtitle">Ogni look nasce dall’ascolto: forma del viso, stile di vita, desideri.</p>
+          <a href="chi-siamo.html" class="button button--ghost">Conosci la nostra storia</a>
+        </div>
       </div>
     </section>
 
     <section class="section">
-      <div class="container soft-gradient" style="padding: 24px 20px;">
-        <h2 class="section__title" style="margin-bottom: 14px;">Servizi del salone</h2>
-
-        <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-scissors"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Taglio Donna</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-taglio-donna">dettagli</button>
-    <div id="svc-taglio-donna" class="svc-acc__content">
-      <p>Studiamo insieme le tue esigenze per realizzare un taglio che valorizzi la tua bellezza e risulti pratico da gestire ogni giorno.</p>
-    </div>
-  </div>
-</article>
-
-         <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-wind"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Piega</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-piega">dettagli</button>
-    <div id="svc-piega" class="svc-acc__content">
-      <p>Non una semplice piega: grazie all’utilizzo dell’acqua termale, il servizio diventa un’esperienza di benessere che esalta la naturale bellezza dei tuoi capelli.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-swatchbook"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Copertura capelli bianchi</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-copertura-bianchi">dettagli</button>
-    <div id="svc-copertura-bianchi" class="svc-acc__content">
-      <p>Dalle colorazioni semi-permanenti a quelle permanenti senza ammoniaca: una soluzione su misura per ogni necessità di copertura.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-droplet"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Tonalizzazione</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-tonalizzazione">dettagli</button>
-    <div id="svc-tonalizzazione" class="svc-acc__content">
-      <p>Toni caldi, freddi, miele o cioccolato: con i nostri tonalizzanti possiamo perfezionare il colore e donare riflessi personalizzati.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-sun"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Schiariture</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-schiariture">dettagli</button>
-    <div id="svc-schiariture" class="svc-acc__content">
-      <p>Dalle tecniche più innovative come l’Airtouch alle schiariture internazionali come il balayage californiano o a mano libera: luminosità su misura.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-leaf"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Trattamenti di ricostruzione</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-ricostruzione">dettagli</button>
-    <div id="svc-ricostruzione" class="svc-acc__content">
-      <p>La salute del capello è la nostra priorità. Offriamo trattamenti mirati per capelli da leggermente indeboliti fino ai più danneggiati.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-spray-can-sparkles"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Anticrespo</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-anticrespo">dettagli</button>
-    <div id="svc-anticrespo" class="svc-acc__content">
-      <p>Mantieni la naturale forma dei tuoi capelli mossi o ricci eliminando il crespo, per una chioma definita e disciplinata.</p>
-    </div>
-  </div>
-</article>
-
-
-         <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-ruler-horizontal"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Lisciante</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-lisciante">dettagli</button>
-    <div id="svc-lisciante" class="svc-acc__content">
-      <p>Per capelli lisci, morbidi e ordinati senza l’uso quotidiano di phon o piastra.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-fire-flame-simple"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Velaterapia</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-velaterapia">dettagli</button>
-    <div id="svc-velaterapia" class="svc-acc__content">
-      <p>Un trattamento particolare che utilizza il calore della fiamma per rimuovere le doppie punte, regalando un’esperienza unica.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-feather"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Estensione / Infoltimento</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-estensioni">dettagli</button>
-    <div id="svc-estensioni" class="svc-acc__content">
-      <p>Per chi desidera lunghezza e volume: soluzioni professionali e naturali per una chioma più piena e corposa.</p>
-    </div>
-  </div>
-</article>
-
-
-          <article class="service__card fade-in-element">
-  <div class="service__icon"><i class="fa-solid fa-user"></i></div>
-  <div class="service__content">
-    <h3 class="service__title">Taglio Uomo</h3>
-    <button class="svc-acc" aria-expanded="false" aria-controls="svc-taglio-uomo">dettagli</button>
-    <div id="svc-taglio-uomo" class="svc-acc__content">
-      <p>Tagli moderni o classici, studiati per valorizzare il tuo stile e accompagnarti nella cura quotidiana del look.</p>
-    </div>
-  </div>
-</article>
+      <div class="cta container soft-gradient fade-in-element">
+        <div class="cta__text">
+          <h2 class="cta__title">Pronto al cambiamento?</h2>
+          <p class="cta__subtitle">Prenota ora una tua consulenza gratuita.</p>
         </div>
-
- </section>
-
-<p class="servizi-note">
-    I servizi vengono personalizzati su obiettivi, lunghezze e texture. Per dubbi o prenotazioni:
-</p>
-
-<div class="button__wrapper">
-    <a href="contatti.html" class="button">Contattaci</a>
-</div>
-
-
+        <a href="contatti.html" class="button button--dark">Prenota</a>
+      </div>
     </section>
   </main>
 
-<footer class="footer">
+  <footer class="footer">
   <div class="container footer__top">
     <a href="index.html" class="footer__brand" aria-label="Fratelli Capoccia Home">
       </span>
@@ -248,8 +192,8 @@
   </div>
 </footer>
 
-
   <button id="scroll-up" class="scrollup" aria-label="Torna su"><i class="fa-solid fa-arrow-up"></i></button>
   <script src="script.js" defer></script>
+  <script src="fx-3d.js" defer></script>
 </body>
 </html>
